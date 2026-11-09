@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Store admin</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f1f1f1;color:#303030;font:14px/1.45 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}button,input,select{font:inherit}button,a{color:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid #4989ff}header{height:56px;background:#1a1a1a;color:white;display:flex;align-items:center;justify-content:space-between;padding:0 16px;position:sticky;top:0;z-index:4}.brand{display:flex;gap:6px;align-items:center;font:bold italic 24px Arial;letter-spacing:-1.6px}.brand svg{width:25px;height:29px}.search{background:#303030;color:#ccc;border:1px solid #555;border-radius:9px;width:min(40vw,480px);padding:7px 10px;display:flex;align-items:center;gap:8px;text-align:left}.search small{margin-left:auto}.store{border:0;background:transparent;color:white;display:flex;align-items:center;gap:8px;font-weight:600;max-width:26vw}.store span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.avatar{background:#bcf4b8;color:#184627;padding:6px;border-radius:8px;font-size:12px}.layout{display:grid;grid-template-columns:228px 1fr;min-height:calc(100vh - 56px)}aside{background:#ebebeb;display:flex;flex-direction:column;padding:18px 12px;position:sticky;top:56px;height:calc(100vh - 56px);overflow:auto}nav a,.sideitem,.settings{display:flex;gap:10px;align-items:center;min-height:31px;padding:5px 11px;font-size:13px;text-decoration:none;border-radius:8px;font-weight:550}.active{background:white;box-shadow:0 1px 3px #0001}.section{color:#616161;font-size:12px;font-weight:600;margin:22px 10px 5px}.settings{margin-top:auto;border:none;background:none;text-align:left}.settings:hover,nav a:hover{background:white}.icon{width:17px;height:17px;flex:none;vertical-align:middle;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}main{min-width:0;padding:30px clamp(16px,3vw,52px) 60px}.content{max-width:1200px;margin:auto}.heading,.line,.actions,.legend,.datebar{display:flex;align-items:center;gap:10px}.heading,.line{justify-content:space-between}.heading{margin:0 0 16px}h1,h2,h3,p{margin:0}h1{font-size:25px;letter-spacing:-1px}h2{font-size:15px;letter-spacing:-.2px}h3{font-size:13px}button.btn,.btn{background:white;border:1px solid #ccc;border-radius:8px;padding:5px 11px;font-weight:550;font-size:13px;box-shadow:0 1px 1px #0001;display:inline-flex;gap:7px;align-items:center}.btn:hover{background:#f8f8f8}.datebar{margin-bottom:16px}.muted,small{color:#676767;font-size:12px}.card{border:1px solid #dedede;background:white;border-radius:13px;box-shadow:0 1px 2px #0001;overflow:hidden}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:12px 12px 0}.metric{border:0;background:transparent;padding:11px 13px;border-radius:8px;text-align:left;color:#303030}.metric[aria-pressed=true]{background:#f3f3f3}.metric span,.label{font-weight:600;font-size:13px;text-decoration:underline dotted #aaa;text-underline-offset:4px}.metric strong,.big{display:block;font-size:25px;line-height:1.4;letter-spacing:-.9px}.plot{padding:15px 18px 12px}.plot svg{width:100%;height:auto;display:block}.legend{justify-content:center;color:#636363;font-size:12px}.legend i{width:16px;height:3px;background:#3789d1;border-radius:4px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:16px}.panel{padding:18px}.row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 0;border-bottom:1px solid #eee}.row:last-child{border:0}.badge{font-size:12px;background:#c1f0d0;color:#154b2e;border-radius:20px;padding:2px 9px}.row b{font-weight:600}.activity{display:flex;align-items:flex-start;gap:10px;padding:12px 0}.activity .icon{background:#edf1ed;box-sizing:content-box;padding:6px;border-radius:8px}.notice{color:#717171;font-size:12px;display:flex;gap:6px;align-items:center}.tag{font-size:11px;padding:3px 8px;border:1px solid #ccc;border-radius:15px;color:#626262}.bar{height:8px;border-radius:4px;background:#eee;overflow:hidden;margin:8px 0 14px}.bar i{height:100%;background:#68a9dd;display:block}footer{margin:22px 0;color:#737373;font-size:12px;text-align:center}dialog{border:1px solid #ccc;border-radius:14px;color:inherit;padding:0;width:min(480px,95vw);max-height:90vh;box-shadow:0 15px 60px #0003}dialog::backdrop{background:#1116}dialog form,dialog .wrap{padding:22px}.fields{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:16px 0}label{display:block;font-size:13px;font-weight:550}input,select{width:100%;border:1px solid #999;border-radius:7px;background:white;color:#333;padding:8px;margin-top:4px}.wide{grid-column:span 2}.actions{justify-content:flex-end;margin-top:16px}.primary{background:#303030!important;color:white}.close{border:0;background:transparent;font-size:20px}.link{background:none;border:0;color:#005bd3;cursor:pointer;padding:0}.mobile{display:none}.searchlinks a{display:block;padding:10px;text-decoration:none;border-radius:6px}.searchlinks a:hover{background:#eee}
+@media(max-width:900px){.layout{grid-template-columns:185px 1fr}.metrics{gap:0}.metric{padding:8px}.metric strong{font-size:20px}}@media(max-width:720px){.layout{display:block}aside{display:none}main{padding:18px 12px}.mobile{display:flex;gap:12px;margin-bottom:12px}.mobile a{text-decoration:none;padding:4px 10px;border-radius:5px}.grid{grid-template-columns:1fr}.metrics{grid-template-columns:1fr 1fr}.heading{flex-wrap:wrap}.brand{font-size:20px}.search small{display:none}.tag{font-size:10px}.datebar{flex-wrap:wrap}.plot{padding:8px}.store{max-width:27vw}.store span:last-child{display:none}}
+.datebar{position:relative}.rangePicker{position:absolute;top:calc(100% + 6px);left:0;width:min(718px,100%);background:white;border-radius:12px;box-shadow:0 6px 30px #0002,0 0 0 1px #0001;z-index:3;font-size:13px}.pickerbody,.rangeinputs,.months,.monthbar,.rangefoot{display:flex}.presets{width:144px;flex-shrink:0;border-right:1px solid #e2e2e2;padding:8px;display:flex;flex-direction:column}.presets button,.days button{border:0;background:transparent;border-radius:5px;text-align:left;font-size:13px;padding:6px 9px}.presets button:hover,.days button:hover,.presets .on{background:#eee}.rangeMain{padding:16px;flex:1;min-width:0}.rangeinputs,.months{gap:16px}.rangeinputs label,.month{flex:1;min-width:0}.monthbar{justify-content:space-between;margin:12px 0 -25px;position:relative;pointer-events:none}.monthbar button{pointer-events:auto;line-height:16px;padding:3px 7px}.month{text-align:center}.days{display:grid;grid-template-columns:repeat(7,1fr);margin-top:10px}.days small,.days button{text-align:center;padding:5px 0}.days .within{background:#ececec;border-radius:0}.days .edge{background:#303030;color:white}.rangefoot{border-top:1px solid #ddd;padding:10px;justify-content:flex-end;gap:8px}.store{cursor:default}@media(max-width:850px){.rangePicker{max-width:536px}.months .month:nth-child(2){display:none}}@media(max-width:520px){.presets{width:99px}.presets button{font-size:11px}.rangeMain{padding:10px}.rangeinputs{flex-wrap:wrap;gap:4px}.rangeinputs label{min-width:110px}.rangeinputs input{padding:3px}.monthbar{margin-bottom:2px}.days{margin-top:4px}.days button{font-size:12px}.mobile button{margin-left:auto}}
+.phoneSearch{display:none}
+@media(max-width:720px){
+ :root{--safe-bottom:env(safe-area-inset-bottom,0px)}
+ header{height:54px;gap:10px;padding:0 14px}
+ .brand{font-size:21px;gap:4px;flex-shrink:0}.brand svg{width:22px;height:26px}
+ .store{margin-left:auto;max-width:min(47vw,230px);color:#f7f7f7;gap:7px;font-size:13px}
+ .store span:last-child{display:inline}.avatar{padding:6px;border-radius:7px;flex-shrink:0}
+ .search{order:1;flex:none;width:34px;height:34px;border-radius:9px;justify-content:center;padding:0;background:#292929;border-color:#444}
+ .desktopSearch{display:none}.phoneSearch{display:block;width:17px;height:17px}
+ main{padding:20px 12px calc(84px + var(--safe-bottom))}
+ .mobile{position:fixed;inset:auto 0 0;z-index:4;margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px;padding:5px 12px calc(5px + var(--safe-bottom));background:#fafafa;border-top:1px solid #dcdcdc}
+ .mobile a,.mobile button{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px;background:transparent;border:0;border-radius:9px;font-size:11px;line-height:1.35;font-weight:600;color:#636363;min-height:47px;margin:0;padding:4px;text-decoration:none;box-shadow:none}
+ .mobile .icon{width:20px;height:20px}.mobile .active{color:#222;background:#eaeaea}
+ .heading{margin:0 2px 13px}.heading h1{font-size:26px}.datebar{margin:0 0 14px;gap:10px}.datebar>.btn{min-height:38px}
+ .metrics{grid-template-columns:repeat(2,minmax(0,1fr));padding:9px;gap:5px}
+ .metric{min-width:0;min-height:78px;padding:9px 11px;border:1px solid #ececec;border-radius:9px}
+ .metric[aria-pressed=true]{border-color:#a1a1a1;background:#f5f5f5}
+ .metric span{font-size:12px}.metric strong{font-size:clamp(22px,6.1vw,27px);line-height:1.38;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+ .plot{padding:4px 9px 13px}.plot svg{display:block}.legend{font-size:12px}
+ .grid{gap:12px;margin-top:12px}.panel{padding:15px}.card{border-radius:12px}.row b,.activity div,.big{min-width:0;overflow-wrap:anywhere}.row b{text-align:right}
+ .rangePicker:not([hidden]){position:fixed;top:auto;bottom:0;left:0;right:0;width:100%;max-width:none;max-height:calc(100dvh - 16px);display:flex;flex-direction:column;z-index:10;box-shadow:0 0 0 100vmax #0005;border-radius:17px 17px 0 0;overflow:hidden}
+ body:has(.rangePicker:not([hidden])){overflow:hidden}
+ .pickerbody{min-height:0;overflow-y:auto;display:block}
+ .presets{width:auto;border:0;border-bottom:1px solid #e6e6e6;padding:12px;display:flex;flex-direction:row;gap:6px;overflow-x:auto;scrollbar-width:thin}
+ .presets button{flex:none;padding:8px 11px;border:1px solid #dedede;border-radius:8px;font-size:12px}
+ .presets button.on{color:#171717;background:#ededed;border-color:#999}
+ .rangeMain{padding:13px 16px 8px}.rangeinputs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .rangeinputs label{min-width:0}.rangeinputs input{max-width:100%;min-width:0;font-size:16px;padding:5px;height:38px}
+ .months{display:block}.months>.month:nth-child(2){display:none}.monthbar{margin:13px 0 -29px}.monthbar button{min-width:32px;min-height:28px;justify-content:center}
+ .month>b{display:block;min-height:28px;padding:4px 34px}.days{margin-top:8px}.days button{min-height:35px;font-size:14px}.days small{font-size:12px}
+ .rangefoot{padding:10px 16px calc(10px + var(--safe-bottom));flex-shrink:0}.rangefoot .btn{min-height:38px}
+ dialog{max-height:calc(100dvh - 26px);width:calc(100% - 20px)}dialog form,dialog .wrap{padding:16px}.fields{gap:10px}.fields label,.fields input,.fields select{min-width:0}.fields input,.fields select,dialog textarea,#query{font-size:16px}.actions{position:sticky;bottom:-16px;background:white;padding:12px 0;margin-top:4px;border-top:1px solid #eee}.actions .btn{min-height:39px}
+}
+</style>
+<header><div class="brand"><svg viewBox="0 0 30 34" aria-hidden="true"><path fill="#fff" d="m5 8 15-4 5 3 3 23-23 2-3-2z"/><path d="M9 8C10-1 18-1 18 6M12 8C14 0 20 1 20 6" fill="none" stroke="white" stroke-width="1.6"/><text x="8" y="26" fill="#202020" font-family="Arial" font-size="20" font-style="italic" font-weight="bold">S</text></svg>shopify</div><button class="search" id="searchBtn" aria-label="Search admin"><span class="desktopSearch">⌕　Search</span><small>⌘ K</small><svg aria-hidden="true" class="phoneSearch" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 6 6"/></svg></button><div class="store" id="storeBtn"><span class="avatar" id="avatar"></span><span id="storeName"></span></div></header>
+<div class="layout"><aside><nav id="nav"></nav><button class="settings" id="settings"></button></aside><main><div class="content"><nav id="mobile" class="mobile" aria-label="Mobile navigation"></nav><div id="page"></div></div></main></div>
+<dialog id="editor"><form id="form"><div class="line"><h2>Данные кабинета</h2><button type="button" class="close" aria-label="Закрыть" onclick="editor.close()">×</button></div><div class="fields" id="fields"></div><details id="dailySection"><summary>Точные данные по дням</summary><label>Дата, продажи, заказы, сеансы<textarea id="dailyInput" rows="4" placeholder="2026-10-01, 249.50, 3, 148" style="width:100%;margin:5px 0;padding:8px"></textarea></label><p class="muted">Одна строка на дату. Итоги рассчитываются по строкам, пропущенные дни считаются нулевыми.</p></details><p class="muted">Итоги относятся к выбранному периоду. Без строк по дням распределение на графике иллюстративное.</p><details style="margin:15px 0"><summary>Перенос настроек</summary><p class="muted" style="margin:8px 0">Экспорт сохраняет последние сохранённые настройки и выбранный период в файл на вашем устройстве.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="btn" onclick="exportShop()">Экспорт JSON</button><button type="button" class="btn" onclick="importFile.click()">Импорт JSON</button></div><input id="importFile" type="file" hidden accept=".json,application/json" onchange="importShop(this)"><p role="status" class="muted" id="transferStatus"></p></details><div class="actions"><button type="button" class="btn" onclick="editor.close()">Отмена</button><button class="btn primary">Сохранить</button></div></form></dialog>
+<dialog id="finder"><div class="wrap"><div class="line"><h2>Search admin</h2><button class="close" aria-label="Close" onclick="finder.close()">×</button></div><input id="query" type="search" placeholder="Find a page…"><div id="results" class="searchlinks"></div></div></dialog>
+<script>
+const paths={Home:'m3 10 9-7 9 7v10h-6v-6H9v6H3Z',Orders:'M5 7h14l2 6v7H3v-7ZM3 13h5l2 3h4l2-3h5',Products:'M3 4h9l9 9-8 8-10-10ZM7 8h.01',Customers:'M8 8a4 4 0 1 0 8 0 4 4 0 1 0-8 0M4 21v-2a8 6 0 0 1 16 0v2',Marketing:'M3 9h5l12-5v15l-12-5H3ZM7 14l2 6h3l-2-5',Discounts:'m12 2 3 3 4 1 1 4 2 3-3 3-1 4-5 1-3 1-3-3-4-1-1-5-1-3 3-3 1-4ZM8 16l8-8',Content:'M4 4h13v16H4ZM8 8h6M8 12h6M20 7v14',Markets:'M2 12a10 10 0 1 0 20 0 10 10 0 1 0-20 0M3 12h18M12 2c-6 5-6 15 0 20 6-5 6-15 0-20',Finance:'M3 8h18v12H3ZM3 8l9-5 9 5M7 11v6m5-6v6m5-6v6',Analytics:'M4 20V10h4v10Zm6 0V4h4v16Zm6 0v-8h4v8Z',Store:'M4 10v10h16V10M3 10l2-6h14l2 6c-1 3-4 3-5 0-2 3-6 3-8 0-1 3-4 3-5 0',Settings:'M3 6h18M3 12h18M3 18h18M8 3v6m8 0v6M9 15v6',Calendar:'M4 5h16v16H4ZM8 3v4m8-4v4M4 10h16',Payment:'M2 5h20v14H2ZM2 10h20',App:'M3 3h7v7H3ZM14 3h7v7h-7ZM3 14h7v7H3ZM14 14h7v7h-7Z'};
+const icon=n=>'<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="'+paths[n]+'"/></svg>';
+const key='shoot-store-v1', defaults={name:'Northline Studio',currency:'USD',start:'2026-10-01',end:'2026-10-31',sales:12842.5,orders:186,sessions:7408,spend:1840,campaign:'Autumn collection',provider:'Shopify Payments'};
+let data={...defaults},metric=0;try{Object.assign(data,JSON.parse(localStorage.getItem(key)))}catch{}
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const money=n=>new Intl.NumberFormat('en-US',{style:'currency',currency:data.currency}).format(n),num=n=>Number(n).toLocaleString('en-US');
+const date=s=>new Date(s+'T00:00:00Z'),day=(s,opt)=>new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',timeZone:'UTC',...opt}).format(s);
+const MS_DAY=86400000;
+const iso=d=>d.toISOString().slice(0,10);
+const plus=(s,n)=>iso(new Date(+date(s)+n*MS_DAY));
+const months=(s,n)=>{const d=date(s);d.setUTCDate(1);d.setUTCMonth(d.getUTCMonth()+n);return iso(d)};
+const dayCount=(a,b)=>Math.round((date(b)-date(a))/MS_DAY)+1;
+const isoToday=()=>{const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')};
+let source={...data},selectedRange={start:source.start,end:source.end},draft,monthCursor,waitingForEnd=false,preset='';
+try{const r=JSON.parse(localStorage.getItem(key+'-filter'));if(r?.start && r?.end && r.end>=r.start && Number.isFinite(+date(r.start)) && Number.isFinite(+date(r.end)))selectedRange=r}catch{}
+function projected(start,end){
+ const n=dayCount(start,end),periodDays=dayCount(source.start,source.end),count=Math.min(n,31),buckets=[];
+ const totals=[source.sales,source.orders,source.sessions,source.spend];
+ function cumulative(i,k){
+  const t=Math.max(0,Math.min(1,i/periodDays));
+  const fraction=k===3?t:t*(.65+.35*t)+.018*Math.sin(4*Math.PI*t)*Math.sin(Math.PI*t);
+  return Math.round(totals[k]*fraction*([0,3].includes(k)?100:1))/([0,3].includes(k)?100:1)
+ }
+ for(let i=0;i<count;i++){
+  const a=plus(start,Math.ceil(i*n/count)),b=plus(start,Math.ceil((i+1)*n/count)-1);
+  const first=dayCount(source.start,a)-1,last=dayCount(source.start,b);
+  const sums=totals.map((v,k)=>cumulative(last,k)-cumulative(first,k));
+  if(source.daily?.length){
+   const rows=source.daily.filter(r=>r[0]>=a&&r[0]<=b);
+   for(let k=0;k<3;k++)sums[k]=rows.reduce((sum,r)=>sum+r[k+1],0)
+  }
+  buckets.push([a,...sums]);
+ }
+ const totalsShown=[1,2,3,4].map(k=>buckets.reduce((sum,r)=>sum+r[k],0));
+ return {...source,start,end,sales:totalsShown[0],orders:totalsShown[1],sessions:totalsShown[2],spend:totalsShown[3],daily:buckets}
+}
+const presets=()=>{
+ const t=isoToday(),m=months(t,0),year=t.slice(0,4)+'-01-01',weekday=(date(t).getUTCDay()+6)%7;
+ return [['Today',t,t],['Yesterday',plus(t,-1),plus(t,-1)],['Last 7 days',plus(t,-6),t],['Last 30 days',plus(t,-29),t],['Last 90 days',plus(t,-89),t],['Last 365 days',plus(t,-364),t],['This week',plus(t,-weekday),t],['This month',m,t],['Last month',months(t,-1),plus(m,-1)],['This year',year,t],['Last year',(Number(t.slice(0,4))-1)+'-01-01',(Number(t.slice(0,4))-1)+'-12-31']]
+};
+function openRange(){
+ draft={...selectedRange};monthCursor=months(draft.start,0);waitingForEnd=false;preset=presets().find(r=>r[1]===draft.start&&r[2]===draft.end)?.[0]||'Custom';
+ drawRange();picker.hidden=false;document.querySelector('#rangeTrigger').setAttribute('aria-expanded','true');picker.querySelector('button').focus()
+}
+function closeRange(){picker.hidden=true;document.querySelector('#rangeTrigger')?.setAttribute('aria-expanded','false')}
+function selectDate(d){
+ preset='Custom';
+ if(!waitingForEnd){draft={start:d,end:d};waitingForEnd=true}
+ else{const start=d<draft.start?d:draft.start,end=d<draft.start?draft.start:d;draft={start,end};waitingForEnd=false}
+ drawRange()
+}
+function calendar(s){
+ const month=date(s),startOffset=month.getUTCDay(),next=months(s,1);
+ let days=Array(startOffset).fill('<span></span>');
+ for(let d=s;d<next;d=plus(d,1)){const inside=d>=draft.start&&d<=draft.end,edge=d===draft.start||d===draft.end;days.push('<button type="button" data-date="'+d+'" aria-label="'+d+'" class="'+(edge?'edge':inside?'within':'')+'">'+Number(d.slice(-2))+'</button>')}
+ return '<div class="month"><b>'+new Intl.DateTimeFormat('en-US',{month:'long',year:'numeric',timeZone:'UTC'}).format(month)+'</b><div class="days">'+['Su','Mo','Tu','We','Th','Fr','Sa'].map(x=>'<small>'+x+'</small>').join('')+days.join('')+'</div></div>'
+}
+function drawRange(){
+ picker.innerHTML='<div class="pickerbody"><div class="presets">'+[...presets().map(r=>r[0]),'Custom'].map(p=>'<button class="'+(p===preset?'on':'')+'" data-preset="'+p+'">'+p+'</button>').join('')+'</div><div class="rangeMain"><div class="rangeinputs"><label>Starting<input id="rangeFrom" type="date" required value="'+draft.start+'"></label><label>Ending<input id="rangeTo" type="date" required value="'+draft.end+'"></label></div><div class="monthbar"><button class="btn" data-move="-1" aria-label="Previous month">‹</button><button class="btn" data-move="1" aria-label="Next month">›</button></div><div class="months">'+calendar(monthCursor)+calendar(months(monthCursor,1))+'</div></div></div><div class="rangefoot"><button class="btn" id="cancelRange">Cancel</button><button class="btn primary" id="applyRange">Apply</button></div>';
+ picker.querySelectorAll('[data-date]').forEach(b=>b.onclick=()=>selectDate(b.dataset.date));
+ picker.querySelectorAll('[data-move]').forEach(b=>b.onclick=()=>{monthCursor=months(monthCursor,Number(b.dataset.move));drawRange()});
+ picker.querySelectorAll('[data-preset]').forEach(b=>b.onclick=()=>{preset=b.dataset.preset;const r=presets().find(p=>p[0]===preset);if(r){draft={start:r[1],end:r[2]};monthCursor=months(draft.start,0);waitingForEnd=false}drawRange()});
+ rangeFrom.onchange=rangeTo.onchange=()=>{if(rangeFrom.value && rangeTo.value && rangeFrom.value<=rangeTo.value){draft={start:rangeFrom.value,end:rangeTo.value};preset='Custom';monthCursor=months(draft.start,0);waitingForEnd=false;drawRange()}};
+ cancelRange.onclick=()=>{closeRange();rangeTrigger.focus()};
+ applyRange.onclick=()=>{
+ if(!rangeFrom.reportValidity()||!rangeTo.reportValidity())return;
+ if(rangeFrom.value>rangeTo.value){rangeTo.setCustomValidity('Choose an ending date on or after the starting date.');rangeTo.reportValidity();rangeTo.setCustomValidity('');return}
+ selectedRange={start:rangeFrom.value,end:rangeTo.value};try{localStorage.setItem(key+'-filter',JSON.stringify(selectedRange))}catch{}closeRange();render();rangeTrigger.focus()
+ }
+}
+document.addEventListener('pointerdown',e=>{if(!picker.hidden&&!picker.contains(e.target)&&!e.target.closest('#rangeTrigger'))closeRange()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!picker.hidden){closeRange();rangeTrigger.focus()}});
+
+const period=()=>day(date(data.start))+' – '+day(date(data.end),{year:'numeric'});
+const cols=['Total sales','Sessions','Orders','Conversion rate'];
+function values(){return [money(data.sales),num(data.sessions),num(data.orders),((data.sessions?data.orders/data.sessions:0)*100).toFixed(2)+'%']}
+function chart(selected=metric,compact=false){
+ const isPhone=window.matchMedia('(max-width:720px)').matches;
+ const svgWidth=isPhone?Math.max(272,Math.min(window.innerWidth-44,600)):(compact?474:842);
+ const plotWidth=svgWidth-82;
+ const from=date(data.start).getTime(),to=date(data.end).getTime(),n=Math.min(31,Math.round((to-from)/86400000)+1);
+ const w=Array.from({length:n},(_,i)=>Math.max(.08,.35+i/Math.max(1,n-1)*.7+.21*Math.sin(i*1.8+selected)+.24*Math.cos(i*.7+selected)));
+ const sum=w.reduce((a,b)=>a+b,0),total=[data.sales,data.sessions,data.orders,data.sessions?100*data.orders/data.sessions:0][selected];
+ let vals=w.map(v=>total*v/sum*(selected===3?n:1)); 
+ if(data.daily?.length){
+  const buckets=Array.from({length:n},()=>[0,0,0]);
+  for(const row of data.daily){
+   const i=to===from?0:Math.min(n-1,Math.floor((date(row[0])-from)/(to-from+86400000)*n));
+   buckets[i][0]+=row[1];buckets[i][1]+=row[3];buckets[i][2]+=row[2];
+  }
+  vals=buckets.map(b=>selected===3?(b[1]?100*b[2]/b[1]:0):b[selected]);
+ }
+ const max=Math.max(...vals,0.01)*1.12;
+ const x=i=>62+(n===1?.5:i/(n-1))*plotWidth,y=v=>158-v/max*140;
+ const points=vals.map((v,i)=>x(i)+','+y(v)).join(' ');
+ const short=v=>new Intl.NumberFormat('en-US',{notation:'compact',maximumFractionDigits:1,...(selected===0?{style:'currency',currency:data.currency}:{})}).format(v);
+ const axis=v=>isPhone&&selected!==3&&v>=1000?short(v):selected===0?new Intl.NumberFormat('en-US',{style:'currency',currency:data.currency,maximumFractionDigits:0}).format(v):selected===3?v.toFixed(1)+'%':Math.round(v);
+ return '<div class="plot"><svg viewBox="0 0 '+svgWidth+' 190" role="img" aria-label="'+cols[selected]+' over time"><defs><linearGradient id="wash'+selected+'" x2="0" y2="1"><stop stop-color="#a8d7fa" stop-opacity=".5"/><stop offset="1" stop-color="#eef8ff" stop-opacity=".15"/></linearGradient></defs>'+[0,1,2,3].map(i=>'<path stroke="#e6e7e8" stroke-dasharray="3 4" d="M62 '+y(max*i/3)+'h'+plotWidth+'"/><text fill="#6b6b6b" x="51" y="'+(y(max*i/3)+4)+'" text-anchor="end" font-size="11">'+axis(max*i/3)+'</text>').join('')+'<polygon fill="url(#wash'+selected+')" points="'+x(0)+',158 '+points+' '+x(n-1)+',158"/><polyline fill="none" stroke="#398aca" stroke-linejoin="round" stroke-width="2.7" points="'+points+'"/>'+vals.map((v,i)=>'<circle cx="'+x(i)+'" cy="'+y(v)+'" r="'+(n===1?4:7)+'" fill="#398aca" opacity="'+(n===1?1:0)+'"><title>'+day(new Date(from+(to-from)*(n===1?0:i/(n-1))))+' · '+axis(v)+'</title></circle>').join('')+Array.from(new Set([0,Math.round((n-1)/3),Math.round((n-1)*2/3),n-1])).map(i=>'<text x="'+x(i)+'" y="182" fill="#666" font-size="11" text-anchor="'+(i===n-1&&n>1?'end':i===0&&n>1?'start':'middle')+'">'+day(new Date(from+(to-from)*(n===1?0:i/(n-1))))+'</text>').join('')+'</svg><div class="legend"><i></i>'+cols[selected]+'</div></div>'
+}
+const kv=(k,v)=>'<div class="row"><span>'+k+'</span><b>'+v+'</b></div>';
+const panel=(title,html)=>'<section class="card panel"><h2>'+title+'</h2>'+html+'</section>';
+const activity=(ic,title,caption)=>'<div class="activity">'+icon(ic)+'<div><b>'+title+'</b><div class="muted">'+caption+'</div></div></div>';
+function render(){
+ data=projected(selectedRange.start,selectedRange.end);
+ const analytics=location.hash==='#analytics',pageName=analytics?'Analytics':'Home';
+ document.title=pageName+' · '+data.name;storeName.textContent=data.name;avatar.textContent=data.name.trim().split(/\s+/).slice(0,2).map(s=>s[0]).join('').toUpperCase();
+ const links=['Home','Orders','Products','Customers','Marketing','Discounts','Content','Markets','Finance','Analytics'];
+ const anchor=n=>'<a href="#'+n.toLowerCase()+'" class="'+(n===pageName?'active':'')+'">'+icon(n)+n+'</a>';
+ nav.innerHTML=links.map(n=>['Home','Analytics'].includes(n)?anchor(n):'<div class="sideitem">'+icon(n)+n+'</div>').join('')+'<div class="section">Sales channels</div><div class="sideitem">'+icon('Store')+'Online Store</div><div class="section">Apps</div><div class="sideitem">'+icon('App')+'Shopify Flow</div>';
+ mobile.innerHTML=anchor('Home')+anchor('Analytics')+'<button class="btn" onclick="edit()">'+icon('Settings')+'Settings</button>';settings.innerHTML=icon('Settings')+'Settings';
+ const overview='<section class="card"><div class="metrics">'+cols.map((c,i)=>'<button class="metric" data-metric="'+i+'" aria-pressed="'+(metric===i)+'"><span>'+c+'</span><strong>'+values()[i]+'</strong></button>').join('')+'</div>'+chart()+'</section>';
+ const status='<span class="badge">Active</span>';
+ const panels=analytics?
+ panel('Total sales breakdown',kv('Total sales',money(data.sales))+kv('Orders',num(data.orders))+kv('Average order value',money(data.orders?data.sales/data.orders:0)))+
+ panel('Marketing performance',kv('Campaign',esc(data.campaign))+kv('Ad spend',money(data.spend))+kv('Store sessions',num(data.sessions))):
+ panel('Store activity',activity('Payment',esc(data.provider),'Payment provider connected')+activity('Marketing',esc(data.campaign),'Advertising campaign active')+activity('Orders',num(data.orders)+' orders', 'Orders received during this period'))+
+ panel('Store overview',kv('Online Store',status)+kv('Payment provider',esc(data.provider))+kv('Advertising spend',money(data.spend))+'<div class="row"><a class="link" href="#analytics">View analytics →</a></div>');
+ const analyticsBoard=analytics?'<div class="grid" style="margin-top:0">'+[0,1].map(i=>'<section class="card"><div class="panel" style="padding-bottom:0"><h2>'+cols[i]+' over time</h2><b class="big">'+values()[i]+'</b></div>'+chart(i,true)+'</section>').join('')+panel('Average order value','<b class="big">'+money(data.orders?data.sales/data.orders:0)+'</b>'+kv('Sales',money(data.sales))+kv('Total orders',num(data.orders)))+panel('Online store conversion rate','<b class="big">'+values()[3]+'</b>'+kv('Sessions',num(data.sessions))+kv('Orders',num(data.orders)))+'</div>':'';
+ page.innerHTML='<div class="heading"><h1>'+pageName+'</h1></div><div class="datebar"><button class="btn" id="rangeTrigger" aria-expanded="false" onclick="picker.hidden?openRange():closeRange()">'+icon('Calendar')+period()+' ⌄</button><span class="muted">All channels</span><div id="picker" role="dialog" aria-label="Date range" class="rangePicker" hidden></div></div>'+(analytics?analyticsBoard:overview)+'<div class="grid">'+panels+'</div>';
+ page.querySelectorAll('[data-metric]').forEach(b=>b.onclick=()=>{metric=Number(b.dataset.metric);render()})
+}
+const schema=[['name','Название магазина','text'],['start','Начало периода','date'],['end','Конец периода','date'],['sales','Сумма продаж','number'],['currency','Валюта','currency'],['orders','Заказы','number'],['sessions','Сеансы','number'],['spend','Расходы на рекламу','number'],['provider','Платёжная система','text'],['campaign','Название кампании','text']];
+function populateForm(data){
+ fields.innerHTML=schema.map(([id,l,t])=>'<label class="'+(id==='name'||id==='campaign'?'wide':'')+'">'+l+(t==='currency'?'<select name="currency">'+['USD','EUR','GBP','RUB','CAD','AUD','VND'].map(c=>'<option '+(data.currency===c?'selected':'')+'>'+c+'</option>').join('')+'</select>':'<input name="'+id+'" type="'+t+'" required '+(t==='number'?'min="0" max="999999999999" step="'+(['sessions','orders'].includes(id)?1:0.01)+'"':t==='text'?'maxlength="80"':'')+' value="'+esc(data[id])+'">')+'</label>').join('');
+ dailyInput.value=(data.daily||[]).map(row=>row.join(', ')).join('\n');dailyInput.setCustomValidity('');dailySection.open=!!dailyInput.value;
+ dailyInput.oninput=()=>dailyInput.setCustomValidity('');
+ form.elements.start.oninput=()=>{form.elements.end.min=form.elements.start.value};form.elements.end.min=form.elements.start.value;
+}
+const backupType='shop-admin-settings', currencies=['USD','EUR','GBP','RUB','CAD','AUD','VND'];
+const backupMessage='Файл не подходит. Выберите JSON, сохранённый в настройках этого кабинета.';
+let importedRange=null;
+function invalidBackup(){throw new Error(backupMessage)}
+function verifiedRange(value){
+ if(!value||typeof value!=='object'||Array.isArray(value))invalidBackup();
+ function isDate(s){return typeof s==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(s)&&Number.isFinite(+date(s))&&iso(date(s))===s}
+ if(!isDate(value.start)||!isDate(value.end)||value.start>value.end)invalidBackup();
+ return {start:value.start,end:value.end}
+}
+function readBackup(text){
+ const doc=JSON.parse(text);
+ if(!doc||doc.type!==backupType||doc.version!==1)invalidBackup();
+ const src=doc.store,store=verifiedRange(src),range=verifiedRange(doc.range);
+ for(const k of ['name','campaign','provider']){
+  if(typeof src[k]!=='string'||!src[k].trim()||src[k].length>80)invalidBackup();
+  store[k]=src[k].trim();
+ }
+ if(!currencies.includes(src.currency))invalidBackup();
+ store.currency=src.currency;
+ const numeric=(v,integer=false)=>typeof v==='number'&&Number.isFinite(v)&&v>=0&&v<=999999999999&&(!integer||Number.isInteger(v));
+ for(const k of ['sales','orders','sessions','spend']){
+  if(!numeric(src[k],k==='orders'||k==='sessions'))invalidBackup();
+  store[k]=src[k];
+ }
+ if(src.daily!==undefined){
+  if(!Array.isArray(src.daily))invalidBackup();
+  const seen=new Set();
+  store.daily=src.daily.map(row=>{
+   if(!Array.isArray(row)||row.length!==4)invalidBackup();
+   const [d,s,o,v]=row;verifiedRange({start:d,end:d});
+   if(d<store.start||d>store.end||seen.has(d)||!numeric(s)||!numeric(o,true)||!numeric(v,true))invalidBackup();
+   seen.add(d);return [d,s,o,v];
+  });
+  if(store.daily.length){
+   [store.sales,store.orders,store.sessions]=[1,2,3].map(k=>store.daily.reduce((sum,r)=>sum+r[k],0));
+   if(!numeric(store.sales)||!numeric(store.orders,true)||!numeric(store.sessions,true))invalidBackup()
+  }
+ }
+ return {store,range}
+}
+function serializeBackup(store,range){
+ return JSON.stringify({type:backupType,version:1,store,range},null,2)
+}
+function exportShop(){
+ const url=URL.createObjectURL(new Blob([serializeBackup(source,selectedRange)],{type:'application/json'}));
+ const a=document.createElement('a');a.href=url;a.download='shop-settings-'+source.end+'.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000)
+}
+async function importShop(input){
+ const file=input.files[0];if(!file)return;
+ try{
+  if(file.size>5*1024*1024)throw new Error('Файл больше 5 МБ.');
+  const restored=readBackup(await file.text());
+  if(!editor.open)return;
+  populateForm(restored.store);importedRange=restored.range;
+  transferStatus.textContent='Данные загружены в форму. Нажмите «Сохранить», чтобы применить их.';
+ }catch(e){transferStatus.textContent=e instanceof SyntaxError?backupMessage:e.message}
+ finally{input.value=''}
+}
+
+function edit(focus='name'){
+ importedRange=null;transferStatus.textContent='';populateForm(source);editor.showModal();form.elements[focus].focus()
+}
+settings.onclick=()=>edit();
+form.onsubmit=e=>{e.preventDefault();const next={};for(const [id,,t] of schema){let v=form.elements[id].value.trim();if(!v){form.elements[id].focus();return}next[id]=t==='number'?Number(v):v}if(dailyInput.value.trim()){
+ const seen=new Set(),rows=[];
+ for(const line of dailyInput.value.trim().split(/\r?\n/)){
+ const [d,...rest]=line.trim().split(',').map(s=>s.trim());const nums=rest.map(Number);
+ const valid=d>=next.start&&d<=next.end&&/^\d{4}-\d{2}-\d{2}$/.test(d)&&Number.isFinite(+date(d))&&date(d).toISOString().startsWith(d)&&!seen.has(d)&&rest.length===3&&rest.every(Boolean)&&nums.every(v=>Number.isFinite(v)&&v>=0&&v<=999999999999)&&nums.slice(1).every(Number.isInteger);
+ if(!valid){dailySection.open=true;dailyInput.setCustomValidity('Проверьте строку: '+line);dailyInput.reportValidity();return}
+ seen.add(d);rows.push([d,...nums]);
+ }
+ next.daily=rows;[next.sales,next.orders,next.sessions]=[1,2,3].map(k=>rows.reduce((sum,row)=>sum+row[k],0));
+ }
+ source=next;selectedRange=importedRange||{start:next.start,end:next.end};try{localStorage.setItem(key,JSON.stringify(source));localStorage.setItem(key+'-filter',JSON.stringify(selectedRange))}catch{alert('Браузер не разрешил сохранить данные. Они останутся до закрытия страницы.')}editor.close();render()};
+function search(){query.value='';findPages();finder.showModal();query.focus()}
+function findPages(){const pages=['Home','Analytics'].filter(s=>s.toLowerCase().includes(query.value.toLowerCase()));results.innerHTML=pages.map(s=>'<a href="#'+s.toLowerCase()+'" onclick="finder.close()">'+icon(s)+'　'+s+'</a>').join('')||'<p class="muted">No pages found</p>'}
+query.oninput=findPages;searchBtn.onclick=search;document.addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'&&!editor.open){e.preventDefault();if(!finder.open)search()}});
+let chartSize;
+ function fitCharts(){
+  const size=window.innerWidth<=720?Math.min(window.innerWidth,644):0;
+  if(size===chartSize)return;
+  chartSize=size;
+  const plots=page.querySelectorAll('.plot');
+  if(location.hash==='#analytics')plots.forEach((p,i)=>p.outerHTML=chart(i,true));
+  else if(plots[0])plots[0].outerHTML=chart();
+ }
+ window.addEventListener('resize',fitCharts);
+ window.addEventListener('hashchange',()=>{metric=0;render();window.scrollTo(0,0)});render();fitCharts();
+</script></html>
