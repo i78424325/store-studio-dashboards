@@ -37,11 +37,14 @@
  .rangefoot{padding:10px 16px calc(10px + var(--safe-bottom));flex-shrink:0}.rangefoot .btn{min-height:38px}
  dialog{max-height:calc(100dvh - 26px);width:calc(100% - 20px)}dialog form,dialog .wrap{padding:16px}.fields{gap:10px}.fields label,.fields input,.fields select{min-width:0}.fields input,.fields select,dialog textarea,#query{font-size:16px}.actions{position:sticky;bottom:-16px;background:white;padding:12px 0;margin-top:4px;border-top:1px solid #eee}.actions .btn{min-height:39px}
 }
+
+.studioNav{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:8px 12px;font:13px system-ui}.studioNav a{color:#37618c;text-decoration:none;padding:7px 9px;border-radius:6px;background:#fff;border:1px solid #dbe1e6}.studioNav .bulkLink{background:#eaf3ff;color:#075fc6;font-weight:600}.studioSync{padding:10px;border:1px solid #e7c75b;border-radius:6px;background:#fff8df;margin:8px 0;font:13px system-ui}.studioSync button{margin:6px;border:1px solid #b6a46c;background:white;padding:8px;border-radius:5px}@media(max-width:720px){.studioNav{gap:5px;padding:5px 10px;font-size:11px}.studioNav a{padding:6px}.app>.studioNav{flex-shrink:0}}
 </style>
 <header><div class="brand"><svg viewBox="0 0 30 34" aria-hidden="true"><path fill="#fff" d="m5 8 15-4 5 3 3 23-23 2-3-2z"/><path d="M9 8C10-1 18-1 18 6M12 8C14 0 20 1 20 6" fill="none" stroke="white" stroke-width="1.6"/><text x="8" y="26" fill="#202020" font-family="Arial" font-size="20" font-style="italic" font-weight="bold">S</text></svg>shopify</div><button class="search" id="searchBtn" aria-label="Search admin"><span class="desktopSearch">⌕　Search</span><small>⌘ K</small><svg aria-hidden="true" class="phoneSearch" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 6 6"/></svg></button><div class="store" id="storeBtn"><span class="avatar" id="avatar"></span><span id="storeName"></span></div></header>
-<div class="layout"><aside><nav id="nav"></nav><button class="settings" id="settings"></button></aside><main><div class="content"><nav id="mobile" class="mobile" aria-label="Mobile navigation"></nav><div id="page"></div></div></main></div>
-<dialog id="editor"><form id="form"><div class="line"><h2>Данные кабинета</h2><button type="button" class="close" aria-label="Закрыть" onclick="editor.close()">×</button></div><div class="fields" id="fields"></div><details id="dailySection"><summary>Точные данные по дням</summary><label>Дата, продажи, заказы, сеансы<textarea id="dailyInput" rows="4" placeholder="2026-10-01, 249.50, 3, 148" style="width:100%;margin:5px 0;padding:8px"></textarea></label><p class="muted">Одна строка на дату. Итоги рассчитываются по строкам, пропущенные дни считаются нулевыми.</p></details><p class="muted">Итоги относятся к выбранному периоду. Без строк по дням распределение на графике иллюстративное.</p><details style="margin:15px 0"><summary>Перенос настроек</summary><p class="muted" style="margin:8px 0">Экспорт сохраняет последние сохранённые настройки и выбранный период в файл на вашем устройстве.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="btn" onclick="exportShop()">Экспорт JSON</button><button type="button" class="btn" onclick="importFile.click()">Импорт JSON</button></div><input id="importFile" type="file" hidden accept=".json,application/json" onchange="importShop(this)"><p role="status" class="muted" id="transferStatus"></p></details><div class="actions"><button type="button" class="btn" onclick="editor.close()">Отмена</button><button class="btn primary">Сохранить</button></div></form></dialog>
+<div class="layout"><aside><nav id="nav"></nav><button class="settings" id="settings"></button></aside><main><div class="content"><nav id="mobile" class="mobile" aria-label="Mobile navigation"></nav><nav class="studioNav" aria-label="Кабинеты"><a href="studio.html">Студия</a><a href="studio.html#scenario">Задать сценарий</a></nav><div id="page"></div></div></main></div>
+<dialog id="editor"><form id="form"><div class="line"><h2>Данные кабинета</h2><button type="button" class="close" aria-label="Закрыть" onclick="editor.close()">×</button></div><nav class="studioNav" aria-label="Переход к кабинету"><a href="studio.html">Студия</a><a href="index.html">Shopify</a><a href="meta-ads.html">Meta Ads</a></nav><div class="studioSync" id="studioSync" role="status" hidden>Данные обновлены в другой вкладке. Загрузите новую версию перед сохранением.<button type="button" id="studioReload">Загрузить обновления</button></div><div class="fields" id="fields"></div><details id="dailySection"><summary>Точные данные по дням</summary><label>Дата, продажи, заказы, сеансы<textarea id="dailyInput" rows="4" placeholder="2026-10-01, 249.50, 3, 148" style="width:100%;margin:5px 0;padding:8px"></textarea></label><p class="muted">Одна строка на дату. Итоги рассчитываются по строкам, пропущенные дни считаются нулевыми.</p></details><p class="muted">Итоги относятся к выбранному периоду. Без строк по дням распределение на графике иллюстративное.</p><details style="margin:15px 0"><summary>Перенос настроек</summary><p class="muted" style="margin:8px 0">Экспорт сохраняет последние сохранённые настройки и выбранный период в файл на вашем устройстве.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="btn" onclick="exportShop()">Экспорт JSON</button><button type="button" class="btn" onclick="importFile.click()">Импорт JSON</button></div><input id="importFile" type="file" hidden accept=".json,application/json" onchange="importShop(this)"><p role="status" class="muted" id="transferStatus"></p></details><div class="actions"><button type="button" class="btn" onclick="editor.close()">Отмена</button><button class="btn primary">Сохранить</button></div></form></dialog>
 <dialog id="finder"><div class="wrap"><div class="line"><h2>Search admin</h2><button class="close" aria-label="Close" onclick="finder.close()">×</button></div><input id="query" type="search" placeholder="Find a page…"><div id="results" class="searchlinks"></div></div></dialog>
+<script src="case-engine.js"></script>
 <script>
 const paths={Home:'m3 10 9-7 9 7v10h-6v-6H9v6H3Z',Orders:'M5 7h14l2 6v7H3v-7ZM3 13h5l2 3h4l2-3h5',Products:'M3 4h9l9 9-8 8-10-10ZM7 8h.01',Customers:'M8 8a4 4 0 1 0 8 0 4 4 0 1 0-8 0M4 21v-2a8 6 0 0 1 16 0v2',Marketing:'M3 9h5l12-5v15l-12-5H3ZM7 14l2 6h3l-2-5',Discounts:'m12 2 3 3 4 1 1 4 2 3-3 3-1 4-5 1-3 1-3-3-4-1-1-5-1-3 3-3 1-4ZM8 16l8-8',Content:'M4 4h13v16H4ZM8 8h6M8 12h6M20 7v14',Markets:'M2 12a10 10 0 1 0 20 0 10 10 0 1 0-20 0M3 12h18M12 2c-6 5-6 15 0 20 6-5 6-15 0-20',Finance:'M3 8h18v12H3ZM3 8l9-5 9 5M7 11v6m5-6v6m5-6v6',Analytics:'M4 20V10h4v10Zm6 0V4h4v16Zm6 0v-8h4v8Z',Store:'M4 10v10h16V10M3 10l2-6h14l2 6c-1 3-4 3-5 0-2 3-6 3-8 0-1 3-4 3-5 0',Settings:'M3 6h18M3 12h18M3 18h18M8 3v6m8 0v6M9 15v6',Calendar:'M4 5h16v16H4ZM8 3v4m8-4v4M4 10h16',Payment:'M2 5h20v14H2ZM2 10h20',App:'M3 3h7v7H3ZM14 3h7v7h-7ZM3 14h7v7H3ZM14 14h7v7h-7Z'};
 const icon=n=>'<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="'+paths[n]+'"/></svg>';
@@ -74,6 +77,7 @@ function projected(start,end){
    const rows=source.daily.filter(r=>r[0]>=a&&r[0]<=b);
    for(let k=0;k<3;k++)sums[k]=rows.reduce((sum,r)=>sum+r[k+1],0)
   }
+  if(source.dailySpend?.length)sums[3]=source.dailySpend.filter(r=>r[0]>=a&&r[0]<=b).reduce((sum,r)=>sum+r[1],0);
   buckets.push([a,...sums]);
  }
  const totalsShown=[1,2,3,4].map(k=>buckets.reduce((sum,r)=>sum+r[k],0));
@@ -165,7 +169,9 @@ function render(){
  page.querySelectorAll('[data-metric]').forEach(b=>b.onclick=()=>{metric=Number(b.dataset.metric);render()})
 }
 const schema=[['name','Название магазина','text'],['start','Начало периода','date'],['end','Конец периода','date'],['sales','Сумма продаж','number'],['currency','Валюта','currency'],['orders','Заказы','number'],['sessions','Сеансы','number'],['spend','Расходы на рекламу','number'],['provider','Платёжная система','text'],['campaign','Название кампании','text']];
+let formSnapshot;
 function populateForm(data){
+ formSnapshot=structuredClone(data);
  fields.innerHTML=schema.map(([id,l,t])=>'<label class="'+(id==='name'||id==='campaign'?'wide':'')+'">'+l+(t==='currency'?'<select name="currency">'+['USD','EUR','GBP','RUB','CAD','AUD','VND'].map(c=>'<option '+(data.currency===c?'selected':'')+'>'+c+'</option>').join('')+'</select>':'<input name="'+id+'" type="'+t+'" required '+(t==='number'?'min="0" max="999999999999" step="'+(['sessions','orders'].includes(id)?1:0.01)+'"':t==='text'?'maxlength="80"':'')+' value="'+esc(data[id])+'">')+'</label>').join('');
  dailyInput.value=(data.daily||[]).map(row=>row.join(', ')).join('\n');dailyInput.setCustomValidity('');dailySection.open=!!dailyInput.value;
  dailyInput.oninput=()=>dailyInput.setCustomValidity('');
@@ -210,6 +216,17 @@ function readBackup(text){
    if(!numeric(store.sales)||!numeric(store.orders,true)||!numeric(store.sessions,true))invalidBackup()
   }
  }
+ if(src.dailySpend!==undefined){
+  if(!Array.isArray(src.dailySpend))invalidBackup();
+  const seenSpend=new Set();
+  store.dailySpend=src.dailySpend.map(row=>{
+   if(!Array.isArray(row)||row.length!==2)invalidBackup();
+   const [d,amount]=row;verifiedRange({start:d,end:d});
+   if(d<store.start||d>store.end||seenSpend.has(d)||!numeric(amount))invalidBackup();
+   seenSpend.add(d);return [d,amount];
+  });
+  if(store.dailySpend.length){store.spend=store.dailySpend.reduce((sum,row)=>sum+row[1],0);if(!numeric(store.spend))invalidBackup()}
+ }
  return {store,range}
 }
 function serializeBackup(store,range){
@@ -245,6 +262,7 @@ form.onsubmit=e=>{e.preventDefault();const next={};for(const [id,,t] of schema){
  }
  next.daily=rows;[next.sales,next.orders,next.sessions]=[1,2,3].map(k=>rows.reduce((sum,row)=>sum+row[k],0));
  }
+ if(formSnapshot?.dailySpend&&next.start===formSnapshot.start&&next.end===formSnapshot.end&&Math.abs(next.spend-formSnapshot.spend)<0.005)next.dailySpend=structuredClone(formSnapshot.dailySpend);
  source=next;selectedRange=importedRange||{start:next.start,end:next.end};try{localStorage.setItem(key,JSON.stringify(source));localStorage.setItem(key+'-filter',JSON.stringify(selectedRange))}catch{alert('Браузер не разрешил сохранить данные. Они останутся до закрытия страницы.')}editor.close();render()};
 function search(){query.value='';findPages();finder.showModal();query.focus()}
 function findPages(){const pages=['Home','Analytics'].filter(s=>s.toLowerCase().includes(query.value.toLowerCase()));results.innerHTML=pages.map(s=>'<a href="#'+s.toLowerCase()+'" onclick="finder.close()">'+icon(s)+'　'+s+'</a>').join('')||'<p class="muted">No pages found</p>'}
@@ -260,4 +278,26 @@ let chartSize;
  }
  window.addEventListener('resize',fitCharts);
  window.addEventListener('hashchange',()=>{metric=0;render();window.scrollTo(0,0)});render();fitCharts();
+
+const studioBridge=(()=>{
+ const modelKey=key,rangeKey=key+'-filter';
+ try{if(localStorage.getItem(modelKey)===null)localStorage.setItem(modelKey,JSON.stringify(source));}catch{}
+ let revision=localStorage.getItem(modelKey),stale=false;
+ function changed(){return localStorage.getItem(modelKey)!==revision}
+ function warn(){stale=true;studioSync.hidden=false;return false}
+ function guard(){if(stale||changed())return warn();return true}
+ function reload(){
+  let latest;try{latest=JSON.parse(localStorage.getItem(modelKey));}catch{return}
+  if(!latest)return;
+  source=latest;
+  let range;try{range=JSON.parse(localStorage.getItem(rangeKey))}catch{}
+  selectedRange=range?.start&&range?.end?range:{start:latest.start,end:latest.end};
+  revision=localStorage.getItem(modelKey);stale=false;studioSync.hidden=true;render();
+ }
+ studioReload.onclick=()=>{ editor.close();reload()};
+ form.addEventListener('submit',e=>{if(!guard()){e.preventDefault();e.stopImmediatePropagation()}},true);
+ editor.addEventListener('close',()=>{if(stale)reload();else revision=localStorage.getItem(modelKey)});
+ window.addEventListener('storage',e=>{if(e.key!==modelKey&&e.key!==rangeKey&&e.key!==null)return;if(editor.open)warn();else reload()});
+ return {guard,committed(){revision=localStorage.getItem(modelKey)}};
+})();
 </script></html>

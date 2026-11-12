@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#183f36">
+  <title>Студия кейса</title>
+  <link rel="stylesheet" href="studio.css">
+  <script src="case-engine.js" defer></script>
+  <script src="studio.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a href="#overview" class="brand"><span class="brand-mark">c<span>•</span></span><span>case<span class="brand-light">studio</span></span></a>
+    <div class="workspace-label">ВАШ ПРОЕКТ</div>
+    <div class="project"><span id="projectAvatar">N</span><div><strong id="projectName">Мой магазин</strong><small>Демонстрационный кейс</small></div></div>
+    <nav id="navigation" aria-label="Разделы"></nav>
+    <div class="sidebar-bottom">
+      <div class="workspace-label">КАБИНЕТЫ ДЛЯ СЪЁМКИ</div>
+      <a href="index.html" target="_blank">Shopify <span>↗</span></a>
+      <a href="meta-ads.html" target="_blank">Meta Ads Manager <span>↗</span></a>
+      <div class="local-note"><span></span> Данные сохраняются в браузере</div>
+    </div>
+  </aside>
+  <div class="main-shell">
+    <header class="topbar">
+      <div class="breadcrumb"><span>Студия</span><span>/</span><strong id="sectionName">Обзор</strong></div>
+      <div class="top-actions">
+        <span class="save-status" id="saveStatus">Все изменения сохранены</span>
+        <button class="button small" id="importButton">Импорт</button>
+        <button class="button small" id="exportButton">Экспорт <span>↗</span></button>
+      </div>
+    </header>
+    <main id="content" tabindex="-1"></main>
+    <footer class="mobile-links"><a href="index.html">Shopify ↗</a><a href="meta-ads.html">Meta Ads ↗</a></footer>
+  </div>
+  <input id="importFile" type="file" accept=".json,application/json" hidden>
+  <div id="toast" role="status" aria-live="polite" hidden></div>
+  <dialog id="previewDialog">
+    <form method="dialog" class="dialog-head"><div><span class="eyebrow">ПЕРЕД СОХРАНЕНИЕМ</span><h2 id="previewTitle">Предпросмотр сценария</h2></div><button class="icon-button" aria-label="Закрыть">×</button></form>
+    <div id="previewBody" class="dialog-body"></div>
+    <div class="dialog-actions"><button class="button" id="cancelPreview">Отмена</button><button class="button primary" id="applyPreview">Применить к кабинетам</button></div>
+  </dialog>
+  <dialog id="budgetDialog">
+    <form id="budgetForm" class="compact-dialog">
+      <div class="dialog-head"><h2>Распределить расходы</h2><button class="icon-button" type="button" id="closeBudget" aria-label="Закрыть">×</button></div>
+      <p class="muted" id="budgetScope"></p>
+      <label>Общая сумма расходов<input name="spend" type="number" min="0" step="0.01" required></label>
+      <p class="field-note">Сумма распределится между выбранными объявлениями. Относительные доли расходов сохранятся.</p>
+      <div class="dialog-actions"><button class="button primary" type="submit">Предпросмотр</button></div>
+    </form>
+  </dialog>
+  <noscript><p class="fatal">Для работы студии включите JavaScript в браузере.</p></noscript>
+</body>
+</html>
